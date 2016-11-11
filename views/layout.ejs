@@ -28,19 +28,33 @@
 				<div class="nav-collapse">
 					<ul class="nav">
 						<li class="active"><a href="/">首页</a></li>
-						<li><a href="/login">登入</a></li>
-						<li><a href="/reg">注册</a></li>
+						<% if (!user) { %>
+							<li><a href="/login">登入</a></li>
+							<li><a href="/reg">注册</a></li>
+							<% } else { %>
+								<li><a href="/logout">登出</a></li>
+								<% } %>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div id="container" class="container">
-		<%- body %>
-			<hr />
-			<footer>
-				<p><a href="https://studentwan.github.io/jekyll-theme-libretto/" target="_blank">StudentWan</a> 2016</p>
-			</footer>
+		<% if (success) { %>
+			<div class="alert alert-success">
+				<%= success %>
+			</div>
+			<% } %>
+				<% if (error) { %>
+					<div class="alert alert-error">
+						<%= error %>
+					</div>
+					<% } %>
+						<%- body %>
+							<hr />
+							<footer>
+								<p><a href="https://studentwan.github.io/jekyll-theme-libretto/" target="_blank">StudentWan</a> 2016</p>
+							</footer>
 	</div>
 </body>
 <script src="/javascripts/jquery.js"></script>

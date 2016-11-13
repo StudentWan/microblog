@@ -1,23 +1,13 @@
-<div class="hero-unit">
-	<h1>欢迎来到 Microblog</h1>
-	<p>Microblog 是一个基于 Node.js 的微博系统。</p>
-	<p>
-		<a class="btn btn-primary btn-large" href="/login">登录</a>
-		<a class="btn btn-large" href="/reg">立即注册</a>
-	</p>
-</div>
-<div class="row">
-	<div class="span4">
-		<h2>Wan 说</h2>
-		<p>朕本淮右布衣，天下于我何加焉！</p>
+<% if (!user) { %>
+	<div class="hero-unit">
+		<h1>欢迎来到 Microblog</h1>
+		<p>Microblog 是一个基于 Node.js 的微博系统。</p>
+		<p>
+			<a class="btn btn-primary btn-large" href="/login">登录</a>
+			<a class="btn btn-large" href="/reg">立即注册</a>
+		</p>
 	</div>
-	<div class="span4">
-		<h2>刘某 说</h2>
-		<p>鸳鸯被里成双夜，一树梨花压海棠。</p>
-	</div>
-	<div class="span4">
-		<h2>郭某 说</h2>
-		<p>我是狗。</p>
-        <p>I am a dog.</p>
-	</div>
-</div>
+	<% } else { %>
+		<%- partial('say') %>
+			<% } %>
+				<%- partial('posts') %>

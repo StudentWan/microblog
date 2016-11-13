@@ -1,0 +1,12 @@
+[Sat Nov 12 2016 23:36:32 GMT-0800 (PST)] /
+Error: An error for test purposes.
+    at Object.<anonymous> (/root/Workspace/microblog/routes/index.js:17:11)
+    at nextMiddleware (/root/Workspace/microblog/node_modules/express/node_modules/connect/lib/middleware/router.js:175:25)
+    at param (/root/Workspace/microblog/node_modules/express/node_modules/connect/lib/middleware/router.js:183:17)
+    at pass (/root/Workspace/microblog/node_modules/express/node_modules/connect/lib/middleware/router.js:191:11)
+    at Object.router (/root/Workspace/microblog/node_modules/express/node_modules/connect/lib/middleware/router.js:197:7)
+    at next (/root/Workspace/microblog/node_modules/express/node_modules/connect/lib/http.js:204:15)
+    at next (/root/Workspace/microblog/node_modules/express/node_modules/connect/lib/middleware/session.js:322:9)
+    at /root/Workspace/microblog/node_modules/express/node_modules/connect/lib/middleware/session.js:341:9
+    at /root/Workspace/microblog/node_modules/.0.3.3@connect-mongo/lib/connect-mongo.js:194:17
+    at /root/Workspace/microblog/node_modules/.1.2.14@mongodb/lib/mongodb/collection.js:1010:5

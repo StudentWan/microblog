@@ -3,6 +3,10 @@
  * Module dependencies.
  */
 
+var fs = require('fs');
+var accessLogfile = fs.createWriteStream('access.log', {flags: 'a'});
+var errorLogfile = fs.createWriteStream('error.log', {flags: 'a'});
+
 var express = require('express')
   , routes = require('./routes');
 
@@ -14,6 +18,7 @@ var settings = require('./settings');
 // Configuration
 
 app.configure(function(){
+  app.use(express.logger({stream: accessLogfile}));
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
   app.use(express.bodyParser());
@@ -53,8 +58,12 @@ app.configure('development', function(){
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
-app.configure('production', function(){
-  app.use(express.errorHandler());
+app.configure('production', function () {
+  app.error(function (err, req, res, next) {
+    var meta = '[' + new Date() + '] ' + req.url + '\n';
+    errorLogfile.write(meta + err.stack + '\n');
+    next();
+  });
 });
 
 app.listen(3000, function(){
